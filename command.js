@@ -1,4 +1,4 @@
-const { prefix } = require('./data/config.json')
+/* const { prefix } = require('./data/config.json')
 
 module.exports = (client, aliases, callback) => {
     if (typeof aliases === 'string') {
@@ -18,5 +18,6 @@ module.exports = (client, aliases, callback) => {
             })
     
     })
-
 }
+ 
+ */

@@ -6,7 +6,6 @@ const client = new Discord.Client({ intents });
 const axios = require('axios');
 const command = require('./command');
 
-
 // Logging into my Disord Bot 
 client.login(config.token);
 
@@ -15,12 +14,11 @@ client.on("ready", () => {
     console.log('Bot is online')
 
     command(client, 'ping', (message) => {
-        message.channel.send('Pong!');
+    message.channel.send('Pong!');
     })
 })
 
-
-client.on('message', message => {
+client.on('messageCreate', message => {
     if (!message.content.startsWith(prefix))
     return;
 
@@ -40,9 +38,8 @@ const encouragements = [
     "You rock!"
 ];
 
-
 // Ping and Pong Response 
-client.on("message", msg => {
+client.on("messageCreate", msg => {
     if (msg.content === "ping") {
         msg.reply("pong")
     }
@@ -60,7 +57,8 @@ function getQuote() {
 }
 
 //Messages Code 
-client.on("message", msg => {
+
+client.on("messageCreate", msg => {
     if (msg.author.bot) return 
 
     if (msg.content === "$inspire") {
@@ -72,41 +70,32 @@ client.on("message", msg => {
         msg.reply(encouragement)
         }
     
-    if (msg.content === "#weather") {
-        getWeather().then(temp => msg.channel.send(temp));
-        }
+    if (msg.content.includes("#weather")) {
+        const args = msg.content.slice(9).trim().split(/ +/g);
+        const command = args.join(" ").toLowerCase();
+        const commandString = JSON.stringify(command);
+        getWeather(commandString).then(temp => msg.channel.send(temp));
+        } 
     })
 
-    async function getWeather() {
-        const response = await fetch(weatherQuery);
-        const weatherData = await response.json();
-        return "It is " + data["main"]["temp"] + " degrees in";
-    
+    //Example Link = https://api.openweathermap.org/data/2.5/weather?q=miami&units=imperial&appid=0eed50cd5ca81be23ba0c10b6d5a9373"
+    async function getWeather(arg1) {
+        let cityName = arg1.replace(/["]+/g, '');
+        let cityNameCaps = cityName.split(" ");
+        for (let i = 0; i < cityNameCaps.length; i++) {
+            cityNameCaps[i] = cityNameCaps[i][0].toUpperCase() + cityNameCaps[i].substr(1);
+        }
+        let cityNameCapsRem = cityNameCaps.join(' ');
+        let weatherLink = "https://api.openweathermap.org/data/2.5/weather?q=";
+        let weatherUnits = '&units=imperial';
+        let weatherApiKey = '&appid=0eed50cd5ca81be23ba0c10b6d5a9373'
+        let weatherLinkFull = weatherLink + cityName + weatherUnits + weatherApiKey;
+        const response = await fetch(weatherLinkFull);
+        const data = await response.json();
+        console.log(weatherLinkFull);
+        return "It is " + data["main"]["temp"] + " degrees in " + cityNameCapsRem + ".";
+    } 
 
 
-        /*         return fetch(weatherQuery)
-        .then(res => {
-            return res.json()
-        })
-        .then(data => {
-            return "It is " + data["main"]["temp"] + " degrees in";
-        })
-    } */
-    
-/*     if (msg.content === "$weather") {
-    let getWeather = async () => {
-    let response = await axios.get("https://api.openweathermap.org/data/2.5/weather?" + weatherCity + unitMeasure + weatherApiKey);
-    let weather = response.data
-    return weather;
-    }
-    } */
 
-//Example Link = https://api.openweathermap.org/data/2.5/weather?q=miami&units=imperial&appid=0eed50cd5ca81be23ba0c10b6d5a9373"
-//Returning Weather on the Bot
-/* let weatherVar = "#weather" + "message";
-let weatherSplice = weatherVar.split(' ', 2); */
-/* let weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
-let weatherCity = command 
-let unitMeasure = "&units=imperial";
-let weatherApiKey = "&appid=0eed50cd5ca81be23ba0c10b6d5a9373";
-let weatherQuery = weatherUrl + weatherCity + unitMeasure + weatherApiKey; */
+
