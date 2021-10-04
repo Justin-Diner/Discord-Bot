@@ -12,22 +12,6 @@ client.login(config.token);
 //Bot is Online Notice when using Node.js
 client.on("ready", () => {
     console.log('Bot is online')
-
-    command(client, 'ping', (message) => {
-    message.channel.send('Pong!');
-    })
-})
-
-client.on('messageCreate', message => {
-    if (!message.content.startsWith(prefix))
-    return;
-
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase;
-
-    if (message.content === "pong", message) {
-        message.channel.send("ping");
-    }
 })
 
 //Sad Words for Motivational Bot
