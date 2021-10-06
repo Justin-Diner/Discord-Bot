@@ -1,12 +1,10 @@
 const Discord = require('discord.js')
-const axios = require('axios')
 const fetch = require('node-fetch')
+const axios = require('axios')
 const config = require('./data/config.json')
-
 
 const intents = new Discord.Intents(32767)
 const client = new Discord.Client({ intents })
-const command = require('./command');
 
 // Logging into my Disord Bot
 client.login(config.token)
@@ -33,14 +31,12 @@ function getQuote() {
       return data[0]['q'] + ' - ' + data[0]['a']
     })
 }
-
 // Messages Code 
 client.on('messageCreate', msg => {
   if (msg.author.bot) return
   if (msg.content === '$inspire') {
     getQuote().then(quote => msg.channel.send(quote))
   }
-
   if (sadWords.some(word => msg.content.includes(word))) {
     const encouragement = 
       encouragements[Math.floor(Math.random() * encouragements.length)]
@@ -60,8 +56,8 @@ client.on('messageCreate', msg => {
 async function getWeather(arg1) {
   const cityName = arg1.replace(/["]+/g, '')
   const cityNameCaps = cityName.split('');
-  for (let i = 0; i < cityNameCaps.length; i++) {
-    cityNameCaps[i] = 
+  for (let i = 0; i < cityNameCaps.length; i += 1) {
+    cityNameCaps[i] =
       cityNameCaps[i][0].toUpperCase() + cityNameCaps[i].substr(1)
   }
   const cityNameCapsRem = cityNameCaps.join(' ')
@@ -71,5 +67,5 @@ async function getWeather(arg1) {
   const weatherLinkFull = weatherLink + cityName + weatherUnits + weatherApiKey
   const response = await fetch(weatherLinkFull)
   const data = await response.json()
-  return "It is " + data['main']['temp'] + ' degrees in ' + cityNameCapsRem + '.'
+  return 'It is ' + data['main']['temp'] + ' degrees in ' + cityNameCapsRem + '.'
 }
