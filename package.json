@@ -1,11 +1,8 @@
 {
-  "requires": true,
-  "lockfileVersion": 1,
   "name": "discord-bot",
   "description": "",
   "version": "1.0.0",
   "main": "app.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,7 +16,6 @@
     "eslint": "^6.3.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.1.0",
-    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
     "express": "^4.17.1",
     "node-fetch": "^3.0.0",

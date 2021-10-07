@@ -31,14 +31,14 @@ function getQuote() {
       return data[0]['q'] + ' - ' + data[0]['a']
     })
 }
-// Messages Code 
+// Messages Code
 client.on('messageCreate', msg => {
   if (msg.author.bot) return
   if (msg.content === '$inspire') {
     getQuote().then(quote => msg.channel.send(quote))
   }
   if (sadWords.some(word => msg.content.includes(word))) {
-    const encouragement = 
+    const encouragement =
       encouragements[Math.floor(Math.random() * encouragements.length)]
     msg.reply(encouragement)
   }
@@ -46,7 +46,7 @@ client.on('messageCreate', msg => {
     const args = msg.content
       .slice(9)
       .trim()
-      .split(/ +/g);
+      .split(/ +/g)
     const command = args.join('').toLowerCase()
     const commandString = JSON.stringify(command)
     getWeather(commandString).then(temp => msg.channel.send(temp))
@@ -55,7 +55,7 @@ client.on('messageCreate', msg => {
 // Example Link = https://api.openweathermap.org/data/2.5/weather?q=miami&units=imperial&appid=0eed50cd5ca81be23ba0c10b6d5a9373"
 async function getWeather(arg1) {
   const cityName = arg1.replace(/["]+/g, '')
-  const cityNameCaps = cityName.split('');
+  const cityNameCaps = cityName.split('')
   for (let i = 0; i < cityNameCaps.length; i += 1) {
     cityNameCaps[i] =
       cityNameCaps[i][0].toUpperCase() + cityNameCaps[i].substr(1)
@@ -67,5 +67,7 @@ async function getWeather(arg1) {
   const weatherLinkFull = weatherLink + cityName + weatherUnits + weatherApiKey
   const response = await fetch(weatherLinkFull)
   const data = await response.json()
-  return 'It is ' + data['main']['temp'] + ' degrees in ' + cityNameCapsRem + '.'
+  return (
+    'It is ' + data['main']['temp'] + ' degrees in ' + cityNameCapsRem + '.'
+  )
 }
