@@ -2,11 +2,13 @@ import fetch from 'node-fetch'
 import Discord, { Message } from 'discord.js'
 import axios from 'axios'
 
-import { config } from './data/config.js'
+import { config } from './data/config.js';
+/* import { pingPong } from './commands/ping.js'; */
 
 const intents = new Discord.Intents(32767)
 const client = new Discord.Client({ intents })
-const prefix = '#';
+
+const prefix = config.prefix;
 
 // Logging into my Disord Bot
 client.login(config.token)
@@ -17,12 +19,7 @@ client.on('ready', () => {
 // Sad Words for Motivational Bot
 const sadWords = ['sad', 'depressed', 'unhappy', 'angry']
 const encouragements = ['Cheer up!', 'Keep Going!', 'You rock!']
-// Ping and Pong Response
-client.on('messageCreate', msg => {
-  if (msg.content === prefix + 'ping') {
-    msg.reply('pong')
-  }
-})
+
 // Returning quotes on the Motivational Bot (Connecting to Zenquotes API)
 function getQuote() {
   return fetch('https://zenquotes.io/api/random')
@@ -36,6 +33,10 @@ function getQuote() {
 // Messages Code
 client.on('messageCreate', msg => {
   let args = msg.content.substring(prefix.length).split(' ');
+  if (msg.content == prefix + 'clog' + args[1]) {
+    let emptyString = '';
+    return msg.channel.send(emptyString + args[1]);
+  }
 // Inpsire
   if (msg.author.bot) return
   if (msg.content === prefix + 'inspire') {
@@ -95,13 +96,52 @@ client.on('messageCreate', msg => {
     getWeather(commandString).then(temp => msg.channel.send(temp))
   }
 // Coinflip 
-if (msg.content.includes(prefix + 'coinflip')) {
-  let number = Math.floor(Math.random() * 2);
-  if (number == 1) {
+  if (msg.content.includes(prefix + 'coinflip')) {
+    let number = Math.floor(Math.random() * 2);
+    if (number == 1) {
     msg.channel.send('Heads!');
   } else (msg.channel.send('Tails!')); 
 }
-})
+// Leetcode commands
+  if (msg.content.includes(prefix + 'leetcode')) {
+      if (!args[1]) {
+      return msg.channel.send("Please enter the command with a type of problem: \n 1. #leetcode: two sum");
+      } 
+      if (!args[2]) {
+      return msg.channel.send("Please provide a number in the following format: \n #leetcode two sum [array] target")
+      }
+      if (msg.content.includes(args[3])) {
+      //RegEx for the nums argument array
+      let randomVar = msg.content
+      let tsRegex = /\[.*?\]/g; //RegEx to Find the numbers between the []
+      let regExResult = randomVar.match(tsRegex);
+      let emptyString2 = '';
+      let regExResultsString = emptyString2 + regExResult; //Array result in a String
+      let regExWithoutSpaces = regExResultsString.replace(/ /g, '');
+      let ArrayNums = JSON.parse(regExWithoutSpaces); 
+      let nums = ArrayNums;
+      //Finding the target within the message
+      let emptyString3 = '';
+      let targetFinal = emptyString3 + randomVar;
+      let targetNum = targetFinal.substr(targetFinal.indexOf("]") + 1);
+      let target = targetNum; 
+      twoSum(nums, target);
+        function twoSum(nums, target) {
+          for(let i = 0; i < nums.length; i++) {
+            for (let j = i + 1; j < nums.length; j++) {
+                let sum = nums[i] + nums[j];
+                if (sum == target) {
+                  let finalAnswer = [i, j];
+                  let finalAnswerString = JSON.stringify(finalAnswer);
+                  msg.channel.send(finalAnswerString);
+                }
+            }
+          }
+        };
+      };
+    }
+});
+
 // Weather Function 
 async function getWeather(arg1) {
   // Removing Quotes
@@ -124,3 +164,4 @@ async function getWeather(arg1) {
     'It is ' + data.main.temp + ' degrees in ' + cityNameCapsRem + '.'
   )
 }
+
