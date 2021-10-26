@@ -102,12 +102,34 @@ client.on('messageCreate', msg => {
     msg.channel.send('Heads!');
   } else (msg.channel.send('Tails!')); 
 }
+
+// Loops
+  if (msg.content.includes(prefix + 'loops')) {
+    if (!args[1]) {
+      return msg.channel.send("```In Javascript, there are five types of loops: \n \n (1) for \n (2) for/in \n (3) for/of \n (4) while \n (5) do/while \n \n Please Choose a Loop in the following format: \"#loops for\" ```")}
+      if (args[1] === "for") {
+       return msg.channel.send(
+        "```The for loop, loops through a block of code a number of times. The for loop has the following syntax: \n \n (statement 1; statement 2; statement 3) \n \n For example: for (let i = 0; i < 5; i++) \{ \n text += \"The number is \" + i + \"<br>\"\;\n \}```") 
+      }
+      if (args[1] === "for/in") {
+        return msg.channel.send ("```The for/in loop iterates over all enumerable properties of an object that are keyed by strings (ignoring ones keyed by Symbols) including inherited enumerable properties. \n \n const object = {a: 1, b: 2, c: 3 }; \n \n for (const property in object) { \n console.log(`${property}: ${object[property]}`); \n } \n \n The expected output would be a:1, b:2, c:3```")
+      }
+      if (args[1] === "for/of") {
+        return msg.channel.send ("```The for/of statement creates a loop iterating over iterable objects, including: built-in String, Array, array-like objects (e.g., arguments or NodeList), TypedArray, Map, Set, and user-defined iterables. It invokes a custom iteration hook with statements to be executed for the value of each distinct property of the object. \n \n const array1 = {'a', 'b', 'c'}; \n \n for (const element of array1) \n {console.log(element); \n } \n \n Expected Output: 'a', 'b', 'c'```");
+      }
+      if (args[1] === "while") {
+        return msg.channel.send ("```The while loop, loops through a block of code as long as a specified condition is true. The while loops has the following syntax: \n \n while (condition) { code to be executed \n} \n \n For example: while (i<3) { \n text += \"The number is \" + i; \n i++;} \n \n Result: \n The number is 0 \n The number is 1 \n The number is 2```");
+      }
+      if (args[1] === "do/while") {
+        return msg.channel.send ("```The do/while statement, creates a loop that executes a specified statement until the test condition evaluates to false. The condition is evaluated after executing the statement, resulting in the specified statement executing at least once. \n \n let result = '' \n let i = 0 \n \n do { i = i + 1; \n result = result + i; \n } while (i < 5); \n \n console.log(result); \n Expected Result: \"12345\"```");
+      }
+  }
 // Leetcode commands
   if (msg.content.includes(prefix + 'leetcode')) {
       if (!args[1]) {
       return msg.channel.send("Please enter the command with a type of problem: \n 1. #leetcode: two sum");
       } 
-      if (!args[2]) {
+      if (!args[3]) {
       return msg.channel.send("Please provide a number in the following format: \n #leetcode two sum [array] target")
       }
       if (msg.content.includes(args[3])) {
