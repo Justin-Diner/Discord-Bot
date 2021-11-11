@@ -8,7 +8,7 @@ export const jsMethods = (msg) => {
     }
 let args = msg.content.substring(config.prefix.length).split(' ');
       if (!args[1]) {
-        return msg.channel.send("```Javascript methods are actions that can be performed on objects. A Javascript method is a property containing a function definition. \n \n Please choose a method from the following commands: \n \n 1: #js-methods push() \n 2: #js-methods pop() \n 3: #js-methods shift() \n 4: #js-methods unshift() \n 5: #js-methods slice() \n 6: #js-methods includes()```")
+        return msg.channel.send("```Javascript methods are actions that can be performed on objects. A Javascript method is a property containing a function definition. \n \n Please choose a method from the following commands: \n \n 1: #js-methods push() \n 2: #js-methods pop() \n 3: #js-methods shift() \n 4: #js-methods unshift() \n 5: #js-methods slice() \n 6: #js-methods includes() \n 7: #js-methods some() \n 8: #js-methods split()```")
       } else if (args[1] === 'push()') {
         return (msg.channel.send("```The push() method adds one or more elements to the end of an array and returns the new length of the array.```"))
       } else if (args[1] === 'pop()') {
@@ -23,6 +23,8 @@ let args = msg.content.substring(config.prefix.length).split(' ');
         return (msg.channel.send('```The includes() method determines whether an array includes a certain value among its entries, returning true or false as appropriate.```'))
       } else if (args[1] === 'some()') {
         return (msg.channel.send('```The some() method tests whether at least one element in the array passes the test implemented by the provided function. It returns true if, in the array, it finds an element for which the provided function returns true; otherwise it returns false. It doesn\'t modify the array.```'))
+      } else if (args[1] === 'split()') {
+        return (msg.channel.send('```The split() method divides a String into an ordered list of substrings, puts these substrings into an array, and returns the array.  The division is done by searching for a pattern; where the pattern is provided as the first parameter in the method\'s call.```'))
       }
   }
 }

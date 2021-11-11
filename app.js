@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
-import Discord, { Message } from 'discord.js'
 import axios from 'axios'
+import Discord, { Message } from 'discord.js'
 import { config } from './data/config.js';
 import { pingPong } from './commands/ping.js'; 
 import { leetCode } from './commands/leetcode.js'; 
