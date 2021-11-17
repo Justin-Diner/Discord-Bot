@@ -1,18 +1,18 @@
 import { config } from '../data/config.js'
 
 // JS Methods
-export const jsMethods = (msg) => {
-	if (msg.content.includes(config.prefix + 'js-methods')) {
-    	if (msg.author.bot) {
-			return
-    	}
-		const args = msg.content.substring(config.prefix.length).split(' ');
-		if (!args[1]) {
-			msg.channel.send('````Javascript methods are actions that can be performed on objects. A Javascript method is a property containing a function definition. \n \n Please choose a method from the following commands: \n \n 1: #js-methods push() \n 2: #js-methods pop() \n 3: #js-methods shift() \n 4: #js-methods unshift() \n 5: #js-methods slice() \n 6: #js-methods includes() \n 7: #js-methods some() \n 8: #js-methods split()```')
-      	}
+export const jsMethods = msg => {
+  if (msg.content.includes(config.prefix + 'js-methods')) {
+    if (msg.author.bot) {
+      return
+    }
+    const args = msg.content.substring(config.prefix.length).split(' ')
+    if (!args[1]) {
+      msg.channel.send('````Javascript methods are actions that can be performed on objects. A Javascript method is a property containing a function definition. \n \n Please choose a method from the following commands: \n \n 1: #js-methods push() \n 2: #js-methods pop() \n 3: #js-methods shift() \n 4: #js-methods unshift() \n 5: #js-methods slice() \n 6: #js-methods includes() \n 7: #js-methods some() \n 8: #js-methods split()```')
+      }
 	  	else if (args[1] === 'push()') {
-        	(msg.channel.send('```The push() method adds one or more elements to the end of an array and returns the new length of the array.```'))
-     	}
+      (msg.channel.send('```The push() method adds one or more elements to the end of an array and returns the new length of the array.```'))
+      }
 	  	else if (args[1] === 'pop()') {
 			(msg.channel.send('```The pop() method removes the last element from an array and returns that element. This method changes the length of the array.```'))
 		}
@@ -38,7 +38,7 @@ export const jsMethods = (msg) => {
 }
 // JS Loops
 export const jsLoops = (msg) => {
-	if (msg.content.includes(config.prefix + 'js-loops')) {
+  if (msg.content.includes(config.prefix + 'js-loops')) {
 		const args = msg.content.substring(config.prefix.length).split(' ');
     	if (msg.author.bot) {
     	return

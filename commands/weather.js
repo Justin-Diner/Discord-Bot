@@ -27,6 +27,9 @@ async function getWeather(arg1) {
 // Weather Pull
 export const weatherAPI = (msg) => {
 	const args = msg.content.substring(config.prefix.length).split(' ');
+	if (msg.author.bot) {
+		return
+	  }
 	if (msg.content.includes(config.prefix + 'weather')) {
     	if (!args[1]) {
       		return msg.channel.send('Please enter the command again and include a city.');

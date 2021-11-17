@@ -8,6 +8,8 @@ import { sadWords } from './commands/sadwords.js'
 import { rPS } from './commands/rps.js'
 import { coinFlip } from './commands/coinflip.js'
 import { weatherAPI } from './commands/weather.js'
+import { algorithms } from './commands/algorithms.js'
+import { commands } from './commands/commands.js'
 
 const intents = new Discord.Intents(32767)
 const client = new Discord.Client({ intents })
@@ -18,6 +20,8 @@ client.login(config.token)
 client.on('ready', () => {
 	console.log('Bot is online')
 })
+
+client.on('messageCreate', commands)
 client.on('messageCreate', pingPong)
 client.on('messageCreate', leetCode)
 client.on('messageCreate', jsMethods)
@@ -27,3 +31,4 @@ client.on('messageCreate', sadWords)
 client.on('messageCreate', rPS)
 client.on('messageCreate', coinFlip)
 client.on('messageCreate', weatherAPI)
+client.on('messageCreate', algorithms)
