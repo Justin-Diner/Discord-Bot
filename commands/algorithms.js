@@ -7,7 +7,7 @@ export const algorithms = msg => {
 	  	}
 		const args = msg.content.substring(config.prefix.length).split(' ')
 		if (!args[1]) {
-			msg.channel.send('```An algorithm is a process or set of rules to be followed in calculations or other problem-solving operations, especially by a computer. \n \n Please choose from the following with a #algorithms command: \n \n 1: #Linear Search \n 2: #Binary Search\n 3: #Selection-sort\n #4 Quick-sort\n #5 breadth-first\n #6 dijkstra\'s```')
+			msg.channel.send('```An algorithm is a process or set of rules to be followed in calculations or other problem-solving operations, especially by a computer. \n \n Please choose from the following with a #algorithms [command]: \n \n 1: Linear Search \n 2: Binary Search\n 3: Selection-sort\n 4: Quick-sort\n 5: breadth-first\n 6: dijkstra\'s```')
 		}
 		else if (args[1] === 'linear') {
 			(msg.channel.send('```Linear Search: \n \nIn this type of search, a sequential search is made over all items one by one. Every item is checked and if a match is found then that particular item is returned, otherwise the search continues till the end of the data collection.\n\nThe time complexity of linear search is O(n).```'))

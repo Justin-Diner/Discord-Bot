@@ -2,7 +2,6 @@ import { config } from '../data/config.js'
 
 // Leetcode commands
 export const leetCode = (msg) => {
-	if (msg.content.includes(config.prefix + 'leetcode')) {
 		const args = msg.content.substring(config.prefix.length).split(' ');
     	if (msg.author.bot) {
     		return
@@ -44,5 +43,5 @@ export const leetCode = (msg) => {
 				}
 			}
 		}
+	
 	}
-}

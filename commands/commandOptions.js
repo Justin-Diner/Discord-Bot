@@ -1,6 +1,6 @@
 import { config } from '../data/config.js'
 
-export const commands = msg => {
+export const commandOptions = msg => {
   if (msg.content.includes(config.prefix + 'commands')) {
     if (msg.author.bot) {
       return
