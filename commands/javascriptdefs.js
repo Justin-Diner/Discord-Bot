@@ -8,7 +8,7 @@ export const jsMethods = msg => {
     }
     const args = msg.content.substring(config.prefix.length).split(' ')
     if (!args[1]) {
-      msg.channel.send('````Javascript methods are actions that can be performed on objects. A Javascript method is a property containing a function definition. \n \n Please choose a method from the following commands: \n \n 1: #js-methods push() \n 2: #js-methods pop() \n 3: #js-methods shift() \n 4: #js-methods unshift() \n 5: #js-methods slice() \n 6: #js-methods includes() \n 7: #js-methods some() \n 8: #js-methods split()```')
+      msg.channel.send('````Javascript methods are actions that can be performed on objects. A Javascript method is a property containing a function definition. \n \n Please choose a method from the following commands: \n \n 1: #js-methods push() \n 2: #js-methods pop() \n 3: #js-methods shift() \n 4: #js-methods unshift() \n 5: #js-methods slice() \n 6: #js-methods includes() \n 7: #js-methods some() \n 8: #js-methods split() \n 9: #js-methods parseFloat()```')
       }
 	  	else if (args[1] === 'push()') {
       (msg.channel.send('```The push() method adds one or more elements to the end of an array and returns the new length of the array.```'))
@@ -33,6 +33,12 @@ export const jsMethods = msg => {
       	}
 	  	else if (args[1] === 'split()') {
         	(msg.channel.send('```The split() method divides a String into an ordered list of substrings, puts these substrings into an array, and returns the array.  The division is done by searching for a pattern; where the pattern is provided as the first parameter in the method\'s call.```'))
+		}
+		else if(args[1] === 'parseFloat()') {
+			(msg.channel.send('```The parseFloat() function parses an argument (converting it to a string first if needed) and returns a floating point number.```'))
+		}
+		else if(args[1] === 'testing()') {
+			(msg.channel.send(`Testing`))
 		}
 	}
 }
