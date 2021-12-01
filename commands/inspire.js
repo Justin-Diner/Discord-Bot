@@ -15,10 +15,10 @@ function getQuote() {
 export const inspireBot = msg => {
   if (msg.content.includes(config.prefix + 'inspire')) {
     if (msg.author.bot) {
-		return
+      return
 	}
-		else {
-      		getQuote().then(quote => msg.channel.send(quote))
-    	}
-	}
+	else {
+      getQuote().then(quote => msg.channel.send(quote))
+    }
+  }
 }

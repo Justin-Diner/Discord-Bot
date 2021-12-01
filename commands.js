@@ -1,7 +1,7 @@
 import { config } from './data/config.js'
 import { pingPong } from './commands/ping.js'
 import { leetCode } from './commands/leetcode.js'
-import { jsMethods, jsLoops } from './commands/javascriptdefs.js'
+import { jsMethods, jsLoops, jsClasses } from './commands/javascriptdefs.js'
 import { inspireBot } from './commands/inspire.js'
 import { sadWords } from './commands/sadwords.js'
 import { rPS } from './commands/rps.js'
@@ -12,21 +12,23 @@ import { commandOptions } from './commands/commandOptions.js'
 import { sadText, encouragements } from './commands/sadwords.js'
 
 const commands = {
-	'ping': pingPong,
-	'leetcode': leetCode,
-	'js-methods': jsMethods,
-	'js-loops': jsLoops,
-	'inspire': inspireBot,
-	'sad': sadWords,
-	'rps': rPS,
-	'coinflip': coinFlip,
-	'weather': weatherAPI,
-	'algorithms': algorithms,
-	'commands': commandOptions
+  'ping': pingPong,
+  'leetcode': leetCode,
+  'js-methods': jsMethods,
+  'js-loops': jsLoops,
+  'js-classes': jsClasses,
+  'inspire': inspireBot,
+  'sad': sadWords,
+  'rps': rPS,
+  'coinflip': coinFlip,
+  'weather': weatherAPI,
+  'algorithms': algorithms,
+  'commands': commandOptions
+  
 }
 
 export const commandHandler = (msg) => {
-	if (msg.author.bot) {
+  if (msg.author.bot) {
 		return
 	}
 	try {
