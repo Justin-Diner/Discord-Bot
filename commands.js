@@ -24,25 +24,24 @@ const commands = {
   'weather': weatherAPI,
   'algorithms': algorithms,
   'commands': commandOptions
-  
 }
 
 export const commandHandler = (msg) => {
   if (msg.author.bot) {
-		return
-	}
-	try {
-	if (sadText.some(word => msg.content.includes(word)))  {
-		return commands['sad'](msg);
+    return
+  }
+  try {
+    if (sadText.some(word => msg.content.includes(word)))  {
+      return commands['sad'](msg);
 	}
 	if (msg.content[0] != '#') {
-		return
+      return
 	}
-	const args = msg.content.substring(config.prefix.length).split(' ')
-	let command = args[0].toString();
-	commands[command](msg)
-	} catch (err) {
+  const args = msg.content.substring(config.prefix.length).split(' ')
+  let command = args[0].toString();
+  commands[command](msg)
+  } catch (err) {
 	console.error(err);
 	msg.channel.send('There was an error, please type #commands for a list of eligible commands.')
-	}
+    }
 };

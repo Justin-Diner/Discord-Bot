@@ -1,2 +1,2 @@
 # Discord Bot
-Welcome to my Discord bot. It is fully functional and has several commands! The bot runs with modules enabled. 
+Welcome to my fully functional Discord bot. The bot has several commands, but is currently aimed towards teaching coding concepts. It also includes various games that members of your channel can play. It is consistently updated. The bot runs with modules enabled. 

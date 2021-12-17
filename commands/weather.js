@@ -1,5 +1,7 @@
 import fetch from 'node-fetch'
 import { config } from '../data/config.js'
+import dotenv from 'dotenv'
+
 
 // Weather Function
 async function getWeather(arg1) {
@@ -15,7 +17,7 @@ async function getWeather(arg1) {
   // Concating API Link for API Request
   const weatherLink = 'https://api.openweathermap.org/data/2.5/weather?q='
   const weatherUnits = '&units=imperial'
-  const weatherApiKey = config.weatherApiKey
+  const weatherApiKey = `${process.env.WEATHER_API}`
   const weatherLinkFull = weatherLink + cityName + weatherUnits + weatherApiKey
   const response = await fetch(weatherLinkFull)
   const data = await response.json()
