@@ -1,8 +1,8 @@
+import dotenv from 'dotenv'
 import Discord, { Message, MessageSelectMenu } from 'discord.js'
-import { config } from './data/config.js'
 import { commandHandler } from './commands.js'
-import dotenv from "dotenv"
-dotenv.config();
+
+dotenv.config()
 
 const intents = new Discord.Intents(32767)
 const client = new Discord.Client({ intents })

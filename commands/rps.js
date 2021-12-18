@@ -6,13 +6,12 @@ export const rPS = msg => {
     const args = msg.content.substring(config.prefix.length).split(' ')
     const choices = ['rock', 'paper', 'scissors']
     if (!args[1]) {
-      return msg.channel.send('Please inlcude your choice.')
+      msg.channel.send('Please inlcude your choice.')
     }
     if (choices.includes(args[1])) {
       const number = Math.floor(Math.random() * 3)
       if (number === 1) {
-        msg.channel.send(
-          'TIE! We both had ' + (args[1]).toLocaleLowerCase() + '!')
+        msg.channel.send(`TIE! We both had ${args[1].toLocaleLowerCase()}!`)
       }
       if (number === 2) {
         if (args[1].toLowerCase() === 'rock') {
@@ -39,3 +38,5 @@ export const rPS = msg => {
     }
   }
 }
+
+export default rPS

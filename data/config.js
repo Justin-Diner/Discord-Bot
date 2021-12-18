@@ -1,5 +1,7 @@
 const config = {
-    prefix: '#',
-  };
+  prefix: '#'
+}
 
-  export { config };
+export { config }
+
+export default config

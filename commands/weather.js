@@ -1,7 +1,8 @@
+import dotenv from 'dotenv'
 import fetch from 'node-fetch'
 import { config } from '../data/config.js'
-import dotenv from 'dotenv'
 
+dotenv.config()
 
 // Weather Function
 async function getWeather(arg1) {
@@ -22,6 +23,7 @@ async function getWeather(arg1) {
   const response = await fetch(weatherLinkFull)
   const data = await response.json()
   return (
+    // eslint-disable-next-line prettier/prettier
     'It is ' + data.main.temp + ' degrees fahrenheit in ' + cityNameCapsRem + '.'
   )
 }
@@ -29,7 +31,7 @@ async function getWeather(arg1) {
 export const weatherAPI = msg => {
   const args = msg.content.substring(config.prefix.length).split(' ')
   if (msg.author.bot) {
-		return
+    return
   }
   if (msg.content.includes(config.prefix + 'weather')) {
     if (!args[1]) {
@@ -44,3 +46,5 @@ export const weatherAPI = msg => {
     getWeather(commandString).then(temp => msg.channel.send(temp))
   }
 }
+
+export default weatherAPI

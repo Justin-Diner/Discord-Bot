@@ -7,3 +7,5 @@ export const pingPong = msg => {
     msg.channel.send('pong')
   }
 }
+
+export default pingPong
