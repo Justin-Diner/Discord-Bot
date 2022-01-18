@@ -48,3 +48,6 @@ __pycache__
 
 #scratch
 *scratch*
+
+#.env
+.env 
