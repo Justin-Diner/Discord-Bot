@@ -1,4 +1,4 @@
-import { config } from '../data/config.js'
+import { config } from '../data/config.js';
 
 export const algorithms = msg => {
   if (msg.content.includes(config.prefix + 'algorithms')) {
