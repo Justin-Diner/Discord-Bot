@@ -1,17 +1,10 @@
-<<<<<<< HEAD
-=======
 /* eslint-disable prettier/prettier */
->>>>>>> justin_code
 /* eslint-disable no-useless-escape */
 import { config } from '../data/config.js'
 
 // JS Methods
 export const jsMethods = msg => {
-<<<<<<< HEAD
-  if (msg.content.includes(config.prefix + 'js-methods')) {
-=======
   if (msg.content.includes(`${config.prefix}js-methods`)) {
->>>>>>> justin_code
     if (msg.author.bot) {
       return
     }
@@ -71,11 +64,7 @@ export const jsMethods = msg => {
 }
 // JS Loops
 export const jsLoops = msg => {
-<<<<<<< HEAD
-  if (msg.content.includes(config.prefix + 'js-loops')) {
-=======
   if (msg.content.includes(`${config.prefix}js-loops`)) {
->>>>>>> justin_code
     const args = msg.content.substring(config.prefix.length).split(' ')
     if (msg.author.bot) {
       return
@@ -92,10 +81,7 @@ export const jsLoops = msg => {
     } else if (args[1] === 'for/in') {
       msg.channel.send(
         // eslint-disable-next-line prettier/prettier
-<<<<<<< HEAD
-=======
         // eslint-disable-next-line no-template-curly-in-string
->>>>>>> justin_code
         '```The for/in loop iterates over all enumerable properties of an object that are keyed by strings (ignoring ones keyed by Symbols) including inherited enumerable properties.\n \n const object = {a: 1, b: 2, c: 3 }; \n \n for (const property in object) { \n console.log(\'${property}: ${object[property]}\'); \n } \n \n The expected output would be a:1, b:2, c:3```'
       )
     } else if (args[1] === 'for/of') {
