@@ -24,7 +24,7 @@ async function getWeather(arg1) {
   const data = await response.json()
   return (
     // eslint-disable-next-line prettier/prettier
-    'It is ' + data.main.temp + ' degrees fahrenheit in ' + cityNameCapsRem + '.'
+    `It is ${data.main.temp} degrees fahrenheit in ${cityNameCapsRem}.`
   )
 }
 // Weather Pull
@@ -33,7 +33,7 @@ export const weatherAPI = msg => {
   if (msg.author.bot) {
     return
   }
-  if (msg.content.includes(config.prefix + 'weather')) {
+  if (msg.content.includes(`${config.prefix}weather`)) {
     if (!args[1]) {
       msg.channel.send('Please enter the command again and include a city.')
     }

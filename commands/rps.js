@@ -2,7 +2,7 @@ import { config } from '../data/config.js'
 
 // Rock, Paper, Scissors
 export const rPS = msg => {
-  if (msg.content.includes(config.prefix + 'rps')) {
+  if (msg.content.includes(`${config.prefix}rps`)) {
     const args = msg.content.substring(config.prefix.length).split(' ')
     const choices = ['rock', 'paper', 'scissors']
     if (!args[1]) {
